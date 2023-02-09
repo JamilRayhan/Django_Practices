@@ -18,6 +18,5 @@ from django.urls import path, include
 from playground import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/',views.sey_hello, name='say_hello'),
-    path('',views.sey_hello,name='say_hello')
+    path('playground/',include('playground.urls')),
 ]
