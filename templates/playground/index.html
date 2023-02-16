@@ -4,15 +4,28 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Homepage for Playground</title>
+        <title>Musician List</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
     </head>
     <body>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        {{text_1}}
-        <div><img src="{% static 'image/pexel.jpg' %}"> </div>
-        
+        <h1>{{text_1}}</h1>
+        <table border="1">
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Instrumrnt</td>
+            </tr>
+            {% for row in musician %}
+
+            <tr>
+                <td>{{row.first_name}}</td>
+                <td>{{row.last_name}}</td>
+                <td>{{row.instrument}}</td>
+            </tr>
+            
+            {% endfor %}
+        </table>
     </body>
 </html>

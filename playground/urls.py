@@ -5,4 +5,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('',views.home,name='home'),
+    path('form/',views.form, name='form')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
