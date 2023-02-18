@@ -8,4 +8,4 @@ class user_form(forms.Form):
     
     def clean(self):
         all_cleaned_data=super().clean()
-        user_email=
+        
