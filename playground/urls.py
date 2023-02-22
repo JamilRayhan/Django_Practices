@@ -3,6 +3,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+app_name="first_app"
+
 urlpatterns = [
     path('',views.home,name='home'),
     path('form/',views.form, name='form')

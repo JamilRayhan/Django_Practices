@@ -1,11 +1,8 @@
 from django import forms
 from django.core import validators
+from playground import models
 
-
-class user_form(forms.Form):
-    user_email=forms.EmailField();
-    user_Vmail=forms.EmailField();
-    
-    def clean(self):
-        all_cleaned_data=super().clean()
-        
+class MusicianForm(forms.ModelForm):
+    class Meta:
+        model=models.Musician
+        fields = "__all__"

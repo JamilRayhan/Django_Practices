@@ -50,7 +50,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.load_template_source',
+)
+ 
+ 
 ROOT_URLCONF = 'storefront.urls'
 
 TEMPLATES = [

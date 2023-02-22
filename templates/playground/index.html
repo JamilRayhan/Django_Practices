@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Musician List</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
-    </head>
-    <body>
-        <h1>{{text_1}}</h1>
-        <table border="1">
-            <tr>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Instrumrnt</td>
-            </tr>
-            {% for row in musician %}
+{% extends 'playground/base.html' %}
+{% load my_firlters%}
+{% block body_block %} 
+<h1>{{text_1|custom}}</h1>
+<a href='{%url 'first_app:form'%}'>Add New</a>
+<table border="1">
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Instrumrnt</td>
+    </tr>
+    {% for row in musician %}
 
-            <tr>
-                <td>{{row.first_name}}</td>
-                <td>{{row.last_name}}</td>
-                <td>{{row.instrument}}</td>
-            </tr>
-            
-            {% endfor %}
-        </table>
-    </body>
-</html>
+    <tr>
+        <td>{{row.first_name}}</td>
+        <td>{{row.last_name}}</td>
+        <td>{{row.instrument}}</td>
+    </tr>
+    
+    {% endfor %}
+</table>
+
+{% endblock  %}
+
+  
+ 
