@@ -3,20 +3,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from playground.models import Musician,Album
 from playground import forms
-def home(request):
-    diction= {'St':"I am Sample Text"}
-    musician_list = Musician.objects.order_by('first_name')
-    diction = {'text_1':'This is a list of Musician', 'musician':musician_list}
+
+def index(request):
+    diction = {"title":"Home Page"}
     return render(request,'playground/index.html',context=diction)
 
-def form(request): 
-    new_form = forms.MusicianForm()
-    
-    if request.method == 'POST':
-        new_form = forms.MusicianForm(request.POST)
-        
-        if new_form.is_valid(): 
-            new_form.save(commit=True)
-            return home(request)
-    diction={'test_form':new_form,'heading_1':"Add new Musician"}
-    return render(request,'playground/form.html',context=diction)  
+
+def album_list(request):
+    diction={'title':"List of Albums"}
+    return render(request,'playground/album_list.html',context=diction)
+
+def musician_form(request):
+    diction = {'title':"Add Musician"}
+    return render(request,'playground/musician_form.html',context=diction)
+
+def album_form(request):
+    diction = {'title':"Add Album"}
+    return render(request,'playground/album_form.html',context=diction)
