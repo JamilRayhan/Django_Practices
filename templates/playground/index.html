@@ -1,4 +1,14 @@
 {% extends 'playground/base.html' %}
 {% block body_block %}
-<h3>Index Page</h3>
+<h3>List of Musicians</h3>
+<ul>
+    {%if musician_list%}
+    {%for musician in musician_list%}
+        <li>{{musician.first_name}} {{musician.last_name}}</li>
+
+    {%endfor%}
+    {% else %}
+    <h4>No Musician in The List</h4>
+    {% endif %}
+</ul>
 {% endblock  %}
