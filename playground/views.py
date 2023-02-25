@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from playground.models import Musician,Album
 from playground import forms
+from django.db.models import Avg
 
 def index(request):
     musician_list = Musician.objects.order_by('first_name')
@@ -10,8 +11,12 @@ def index(request):
     return render(request,'playground/index.html',context=diction)
 
 
-def album_list(request):
-    diction={'title':"List of Albums"}
+def album_list(request,id):
+    artist_info = Musician.objects.get(pk=id)
+    album_list = Album.objects.filter(artist=id).order_by('name','release_date')
+    artist_rating = Album.objects.filter(artist=id).aggregate(Avg('num_stars'))
+    
+    diction={'title':"List of Albums",'artist_info':artist_info,'album_list':album_list,'artist_rating':artist_rating}
     return render(request,'playground/album_list.html',context=diction)
 
 def musician_form(request):
@@ -36,3 +41,9 @@ def album_form(request):
             return index(request)
     diction = {'title':"Add Album",'album_form':form}
     return render(request,'playground/album_form.html',context=diction)
+
+def edit_artist(request, id):
+    artist_info = Musician.objects.get(pk=id)
+    form=forms.MusicianForm(instance=artist_info)
+    diction ={'edit_form':form}
+    return render(request,'playground/edit_artist.html',context=diction)
