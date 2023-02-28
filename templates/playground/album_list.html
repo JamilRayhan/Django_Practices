@@ -4,6 +4,7 @@
 <h6>Instrument : {{artist_info.instrument}}</h6>
 <h6>Artist Rating : {{artist_rating.num_stars__avg}}</h6>
 <a href="{% url 'first_app:edit_artist' id=artist_info.id  %}" class="btn btn-success btn-sm">Edit</a>
+<a href="{% url 'first_app:delete_musician' id=artist_info.id  %}" class="btn btn-danger btn-sm" onclick="return confirm('Delete the Musician?')">Delete</a>
 <h3>Album List</h3>
 <table class="table table-bordered">
     <tr>
@@ -13,7 +14,7 @@
     </tr>
     {% for album in album_list %}
     <tr>
-        <td>{{album.name}}</td>
+        <td><a href="{%url 'first_app:edit_album' id=album.id%}">{{album.name}}</a></td>
         <td>{{album.release_date|date:"M d, Y"}}</td>
         <td>{{album.num_stars}}</td>
     </tr>

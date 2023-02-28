@@ -1,0 +1,6 @@
+{% extends 'playground/base.html' %}
+{% block body_block %}
+{%if delete_success%}
+<div class='alert alert-danger'>{{delete_success}}</div>
+{% endif %}
+{% endblock  %}
