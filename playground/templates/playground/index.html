@@ -4,7 +4,12 @@
 <ul>
     {%if musician_list%}
     {%for musician in musician_list%}
-        <li><a href="{% url 'first_app:album_list' id=musician.id%}">{{musician.first_name}} {{musician.last_name}}</a></li>
+        <li>
+            <a href="{% url 'first_app:musician_details' pk=musician.pk  %}">
+                {{musician.first_name}} 
+                {{musician.last_name}}
+            </a>
+        </li>
 
     {%endfor%}
     {% else %}
